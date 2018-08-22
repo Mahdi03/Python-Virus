@@ -3,27 +3,28 @@ from random import randint
 import random, string
 import fnmatch
 
-os.chdir("hi\\hello\\bye\\bellow\\New folder\\")
+os.chdir("test")
 
 def genRandDirs():
     i = randint(0, 1)
     j = randint(0, 1)
     k = randint(0, 1)
     
-    l = randint(0, 1)
     if i == 1:
         createRandDir()
     elif i == 0:
         genRandDirs()
+        changeDir()
     if j == 1:
         createRandFile()
     elif j == 0:
         genRandDirs()
-    
+        changeDir()
     if k == 1:
         changeDir()
     elif k == 0:
         genRandDirs()
+
 def randomWord(length):
         letters = string.ascii_lowercase
         return ''.join(random.choice(letters) for i in range(length))
@@ -32,7 +33,6 @@ def createRandDir():
     nameDir = randomWord(lenOfNameDir)
     os.mkdir(nameDir)
     print("Created Directory: ", nameDir)
-
 def createRandFile():
     # List Of Supported File Types - So Far...
     # Web Development
@@ -49,17 +49,18 @@ def createRandFile():
     newFile.close()
     print(nameFile, " has just been created in", os.getcwd())
     genRandDirs()
-
 def changeDir():
     availDirs = []
     print(len(availDirs))
     for i in os.listdir():
         if os.path.isdir(i):
-            print(i)
             availDirs.extend([str(i)])
     a = randint(0, len(availDirs) - 2)
     os.chdir(availDirs[a])
+    print("Available dirs:")
+    print(availDirs)
+    print("Current Dir:")
+    print(os.getcwd())
     genRandDirs()
 
-
-genRandDirs()
+changeDir()

