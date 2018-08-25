@@ -14,12 +14,10 @@ def genRandDirs():
         createRandDir()
     elif i == 0:
         genRandDirs()
-        changeDir()
     if j == 1:
         createRandFile()
     elif j == 0:
         genRandDirs()
-        changeDir()
     if k == 1:
         changeDir()
     elif k == 0:
@@ -63,4 +61,4 @@ def changeDir():
     print(os.getcwd())
     genRandDirs()
 
-changeDir()
+genRandDirs()

@@ -20,13 +20,18 @@ Above it, there are 2 files that have titles of **md5 Hashes**.
 			1. Then feel free to **remove `d82b5a265ef9e1c62e6fe52a3613b288.txt` for good**.
 	* This file is ***only for testing purposes*** to see how the files and their directories are stored.
 	* Of course, it's better to get rid of the file for production.
+	* This file shows how the directories and the file locations are stored. ***Please feel free to point out a better way of storing such information***
+	* Right now, the information is stored in multiple lists as `key, value` pairs.
 * `genRandDirs.py`:
 	* This file was manually created by me.
-	* This file is also not necessary to the project, however, it is used for testing the `virus.py`.
-	* This file generates random files and folders inside the `test` folder, so that later on, ***any damage created by `virus.py` only harms the automatically generated files***, which can be later erased and re-created using.
+	* This file is also not necessary to the project, however, it is used for testing the `virus.py` file.
+	* This file generates random files and folders inside the `test` folder, so that later on, ***any damage created by `virus.py` only harms the automatically generated files***, which can be later erased and re-created using the same script (`genRandDirs.py`).
+	* When running this file, you will come across certain errors. Just exit and run the file again. No need to try and fix the script. However, feel free to try and fix it!!!
+	* You can keep running the script until you are satified with the amount of files and folders.
+		*  **Running this file 3-4 times will create about 3,000 files, at least for me!!**
 * And of course, ***I HOPE THIS FILE NEVER GOES INTO PRODUCTION***
 * If it does, ***I AM NOT RESPONSIBLE for any damage caused by this project.***
-* ***THIS PROJECT IS INTENDED FOR LEARNING PURPOSES ONLY***
+* # ***THIS PROJECT IS INTENDED FOR LEARNING PURPOSES ONLY!!!***
 
 ## `test` Directory:
 Under the `test` directory, you will find a bunch of randomly genereated files by `genRandDirs.py`.
