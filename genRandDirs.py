@@ -34,7 +34,7 @@ def createRandDir():
 def createRandFile():
     # List Of Supported File Types - So Far...
     # Web Development
-    listOfFileTypes = ['.txt', '.htm', '.html', '.xhtml', '.css', '.js', '.xml', '.xsl', '.php', '.phtml', '.sql']
+    listOfFileTypes = ['.txt', '.pdf', '.htm', '.html', '.xhtml', '.css', '.js', '.xml', '.xsl', '.php', '.phtml', '.sql']
     # Other Commonly Referenced Programming Languages
     listOfFileTypes.extend(['.c', '.cs', '.cpp', '.h', '.xaml', '.asm', '.py'])
     # Some Microsoft Office File Types

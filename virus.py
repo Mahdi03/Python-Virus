@@ -278,18 +278,6 @@ def findCPP(*directories):
         availDirs.append(i)
     filteredCPP = fnmatch.filter(availDirs, '*.cpp')
 def findH(*directories):
-    availDirs = []
-    for i in directories:
-        availDirs.append(i)
-    filteredH = fnmatch.filter(availDirs, '*.h')
-
-def findPY(*directories):
-    availDirs = []
-    for i in directories:
-        availDirs.append(i)
-    filteredPY = fnmatch.filter(availDirs, '*.py')
-    if len(filteredPY) > 0:
-        lengthOfPYFiles = len(filteredPY)
 """
 # This Is Where Python Tries To Write To The Certain File Types By Prepending
 # Some Code From The Same Language
