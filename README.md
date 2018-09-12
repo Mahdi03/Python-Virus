@@ -9,8 +9,9 @@ There is a `virus.py` Python File, this is the main file that acts as a virus.
 
 Above it, there are 2 files that have titles of **md5 Hashes**.
 
-To run this code quickly, open The Command Prompt, CD into the Project's Directory, and run
-	cls && for /l %x in (1, 1, 5) do python genRandDirs.py && python virus.py
+To run this code quickly, open The Command Prompt, CD into the Project's Directory, and run:
+
+`cls && for /l %x in (1, 1, 5) do python genRandDirs.py && python virus.py`
 
 
 ## Extra Files:
