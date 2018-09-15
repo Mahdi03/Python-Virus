@@ -1,3 +1,4 @@
+exec(open("clearTest.py", "r").read())
 for i in range(5):
     try:
         exec(open("genRandDirs.py", "r").read())

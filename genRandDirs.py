@@ -57,7 +57,7 @@ try:
         # Other Commonly Referenced Programming Languages
         listOfFileTypes.extend(['.c', '.cs', '.cpp', '.h', '.o', '.exe', '.xaml', '.asm', '.py'])
         # Some Microsoft Office File Types
-        listOfFileTypes.extend(['.accdb', '.mdb','.xls', '.xlsx', '.ppt', '.pptx', '.doc', '.docx'])
+        listOfFileTypes.extend(['.accdb', '.mdb','.xls', '.xlsx', '.ppt', '.pps', '.pptx', '.doc', '.docx'])
         # Randomly Choose Which File Type/Extension To Use In Randomly Created File
         fileExtensionUsed = listOfFileTypes[randint(0, len(listOfFileTypes) - 1)]
         # Just For Testing Use: Prints File Extension Used
